@@ -8,56 +8,16 @@
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom CSS -->
-    <style>
-        body {
-            font-family: 'Arial', sans-serif;
-        }
-
-        .navbar-brand {
-            font-weight: bold;
-        }
-
-        .navbar {
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-
-        .hero-section {
-            background-color: #3187e9;
-            color: white;
-            padding: 50px 0;
-            text-align: center;
-        }
-
-        .hero-section h1 {
-            font-size: 3rem;
-        }
-
-        .card {
-            margin-top: 30px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-
-        .footer {
-            margin-top: 50px;
-            padding: 20px 0;
-            background-color: #f8f9fa;
-            text-align: center;
-        }
-
-        .footer p {
-            margin: 0;
-            font-size: 0.9rem;
-            color: #6c757d;
-        }
-    </style>
+    <link rel="stylesheet" href="{{ asset('assets/css/custom-style.css') }}">
 </head>
 
 <body>
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container">
-            <a class="navbar-brand" href="#">My Laravel App</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <a class="navbar-brand font-custom" href="#">My Laravel App</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
@@ -82,6 +42,7 @@
     <!-- Hero Section -->
     <section class="hero-section">
         <div class="container">
+            <img src="{{ asset('assets/images/logo.png') }}" alt="Logo">
             <h1 class="display-6 mb-2">Welcome Aboard!</h1>
             <p>{{ $username }}</p>
             <p>{{ $last_login }}</p>
@@ -97,7 +58,9 @@
                 <div class="card mb-4">
                     <div class="card-body">
                         <h5 class="card-title">About Our Application</h5>
-                        <p class="card-text">Our application provides a clean and intuitive interface, allowing users to navigate easily and perform tasks efficiently. Built with Laravel and Bootstrap, it offers flexibility and responsiveness.</p>
+                        <p class="card-text">Our application provides a clean and intuitive interface, allowing users to
+                            navigate easily and perform tasks efficiently. Built with Laravel and Bootstrap, it offers
+                            flexibility and responsiveness.</p>
                         <a href="#" class="btn btn-primary">Explore More</a>
                     </div>
                 </div>
@@ -106,11 +69,13 @@
                 <div class="accordion" id="accordionExample">
                     <div class="accordion-item">
                         <h2 class="accordion-header">
-                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseOne">
                                 About Us
                             </button>
                         </h2>
-                        <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+                        <div id="collapseOne" class="accordion-collapse collapse show"
+                            data-bs-parent="#accordionExample">
                             <div class="accordion-body">
                                 We are a tech company that specializes in web development solutions.
                             </div>
@@ -118,7 +83,8 @@
                     </div>
                     <div class="accordion-item">
                         <h2 class="accordion-header">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseTwo">
                                 Our Services
                             </button>
                         </h2>
@@ -151,6 +117,28 @@
                             Gunakan <code>.card</code> untuk konten yang butuh border & sedikit efek shadow.
                         </p>
                     </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Form Pertanyaan</h5>
+
+                    <form action="{{ route('question.store') }}" method="POST">
+                        @csrf
+                        <div class="mb-3">
+                            <label for="nama" class="form-label">Nama</label>
+                            <input type="text" class="form-control" name="nama">
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="text" class="form-control" name="email">
+                        </div>
+                        <div class="mb-3">
+                            <label for="pertanyaan" class="form-label">Pertanyaan</label>
+                            <textarea class="form-control" rows="4" name="pertanyaan"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Kirim Pertanyaan</button>
+                    </form>
                 </div>
             </div>
 
@@ -216,7 +204,8 @@
                                 </tbody>
                             </table>
                         </div>
-                        <p class="text-muted small mb-0">Tambahkan <code>.table-striped</code> atau <code>.table-bordered</code> sesuai kebutuhan.</p>
+                        <p class="text-muted small mb-0">Tambahkan <code>.table-striped</code> atau
+                            <code>.table-bordered</code> sesuai kebutuhan.</p>
                     </div>
                 </div>
             </div>
@@ -226,7 +215,7 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <p>&copy; {{date('Y')}} My Laravel App. All Rights Reserved.</p>
+            <p>&copy; {{ date('Y') }} My Laravel App. All Rights Reserved.</p>
         </div>
     </footer>
 
