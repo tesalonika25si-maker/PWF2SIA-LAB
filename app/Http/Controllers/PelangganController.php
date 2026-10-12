@@ -12,20 +12,16 @@ class PelangganController extends Controller
      */
     public function index()
     {
-        // Mengambil semua data pelanggan dari database
-        $pelanggan = Pelanggan::all();
-
-        // Mengirim data ke view index (resources/views/pelanggan/index.blade.php)
-        return view('admin.pelanggan.create');
-    }
-
+   $data['dataPelanggan'] = Pelanggan::all();
+		return view('admin.pelanggan.index',$data);
+}
     /**
      * Menampilkan form untuk menambah pelanggan baru.
      */
     public function create()
     {
         // Menampilkan view form tambah (resources/views/pelanggan/create.blade.php)
-        return view('pelanggan.create');
+        return view('admin.pelanggan.create');
     }
 
     /**
