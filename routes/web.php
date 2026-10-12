@@ -5,6 +5,8 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MahasiswaController;
 use App\Http\Controllers\QuestionController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\PelangganController;
+
 
 
 
@@ -47,3 +49,5 @@ Route::get('/question', [QuestionController::class, 'index'])
 
 Route::get('dashboard',[DashboardController::class,'index'])
 ->name('dashboard.index');
+
+Route::resource('pelanggan', PelangganController::class);
