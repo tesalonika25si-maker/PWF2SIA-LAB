@@ -57,8 +57,8 @@
                       <span class="mt-1 ms-1 sidebar-text">Volt Overview</span>
                   </a>
               </li>
-              <li class="nav-item  active ">
-                  <a href="{{ route('pelanggan.index')}}" class="nav-link">
+              <li class="nav-item {{ request()->routeIs('dashboard.*') ? 'active' : '' }}">
+                  <a href="{{ route('pelanggan.index') }}" class="nav-link">
                       <span class="sidebar-icon">
                           <svg class="icon icon-xs me-2" fill="currentColor" viewBox="0 0 20 20"
                               xmlns="http://www.w3.org/2000/svg">
