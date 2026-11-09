@@ -6,6 +6,10 @@ use App\Http\Controllers\MahasiswaController;
 use App\Http\Controllers\QuestionController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PelangganController;
+use App\Models\User;
+use Illuminate\Database\Seeder;
+use Faker\Factory;
+use App\Http\Controllers\UserController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -43,3 +47,5 @@ Route::post('/question/store', [QuestionController::class, 'store'])->name('ques
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
 
 Route::resource('pelanggan', PelangganController::class);
+
+Route::resource('users', UserController::class);
