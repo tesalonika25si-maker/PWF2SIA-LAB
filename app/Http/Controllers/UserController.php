@@ -30,12 +30,14 @@ class UserController extends Controller
             'name' => 'required',
             'email' => 'required|email|unique:users,email',
             'password' => 'required|min:8',
+            'role' => 'required',
         ]);
 
         User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
+            'role' => $request->role,
         ]);
 
         return redirect('/users')
@@ -59,11 +61,13 @@ class UserController extends Controller
                 Rule::unique('users', 'email')->ignore($user->id),
             ],
             'password' => 'nullable|min:8',
+            'role' => 'required',
         ]);
 
         $data = [
             'name' => $request->name,
             'email' => $request->email,
+            'role' => $request->role,
         ];
 
         if ($request->filled('password')) {

@@ -25,6 +25,7 @@
                         <th>No</th>
                         <th>Nama</th>
                         <th>Email</th>
+                        <th>Role</th>
                         <th>Aksi</th>
                     </tr>
                 </thead>
@@ -35,6 +36,7 @@
                         <td>{{ $loop->iteration }}</td>
                         <td>{{ $user->name }}</td>
                         <td>{{ $user->email }}</td>
+                        <td>{{ $user->role }}</td>
                         <td>
                             <a href="{{ route('users.edit', $user->id) }}"
                                class="btn btn-warning btn-sm">
@@ -57,7 +59,7 @@
                     </tr>
                     @empty
                     <tr>
-                        <td colspan="4" class="text-center">
+                        <td colspan="5" class="text-center">
                             Belum ada data user.
                         </td>
                     </tr>

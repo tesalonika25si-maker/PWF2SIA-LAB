@@ -45,10 +45,21 @@ Route::get('/home', [HomeController::class, 'index']);
 Route::get('/question', [QuestionController::class, 'index'])->name('question.index');
 Route::post('/question/store', [QuestionController::class, 'store'])->name('question.store');
 
-Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
+Route::get('/dashboard', [DashboardController::class, 'index'])
+    ->name('dashboard')
+    ->middleware('checkislogin');
 
-Route::resource('pelanggan', PelangganController::class);
-Route::resource('users', UserController::class);
+Route::middleware(['checkislogin'])->group(function () {
+    Route::middleware(['checkrole:Super Admin'])->group(function () {
+        Route::resource('users', UserController::class);
+    });
+
+    Route::middleware(['checkrole:Super Admin,mitra'])->group(function () {
+        Route::resource('pelanggan', PelangganController::class);
+    });
+});
+
+Route::redirect('/user', '/users');
 
 Route::get('/login', [AuthController::class, 'index'])->name('login');
 Route::post('/login', [AuthController::class, 'login'])->name('auth.login');

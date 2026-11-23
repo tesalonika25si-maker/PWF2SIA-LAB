@@ -43,6 +43,15 @@
                            placeholder="Kosongkan jika tidak ingin mengganti password">
                 </div>
 
+                <div class="mb-3">
+                    <label class="form-label">Role</label>
+                    <select name="role" class="form-select" required>
+                        <option value="Super Admin" {{ old('role', $user->role) == 'Super Admin' ? 'selected' : '' }}>Super Admin</option>
+                        <option value="Pelanggan" {{ old('role', $user->role) == 'Pelanggan' ? 'selected' : '' }}>Pelanggan</option>
+                        <option value="Mitra" {{ old('role', $user->role) == 'Mitra' ? 'selected' : '' }}>Mitra</option>
+                    </select>
+                </div>
+
                 <button type="submit" class="btn btn-primary">
                     Update
                 </button>
