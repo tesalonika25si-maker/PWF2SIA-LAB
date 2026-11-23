@@ -6,13 +6,14 @@ use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
-    public function index()
-    {
-        if (Auth::check()) {
-            return redirect()->route('dashboard');
-        }
+		public function index()
+		{
+		    if (Auth::check()) {
+		        return redirect()->route('dashboard');
+		    }
 
-        return view('auth.login');
+		    return view('auth.login');
+		}
 
         function login(Request $request)
         {
@@ -37,4 +38,3 @@ class AuthController extends Controller
             return redirect()->route('auth.index');
         }
     }
-}
